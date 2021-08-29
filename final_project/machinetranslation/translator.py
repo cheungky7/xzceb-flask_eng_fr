@@ -25,8 +25,11 @@ def englishToFrench(englishText):
     translation = language_translator.translate(
     englishText,
     model_id='en-fr').get_result()
-    
-    frenchText=translation.translations.translation
+  
+   # print(translation)
+    print((translation.get('translations'))[0].get('translation'))
+   # print(tran_obj)
+    frenchText=(translation.get('translations'))[0].get('translation')
 
     return frenchText
 
@@ -36,7 +39,10 @@ def frenchToEnglish(frenchText):
     translation = language_translator.translate(
     frenchText,
     model_id='fr-en').get_result()
+  
+   # print(translation)
+    print((translation.get('translations'))[0].get('translation'))
     
-    englishText=translation.translations.translation
-
+    englishText=(translation.get('translations'))[0].get('translation')
+   # print(tran_obj)
     return englishText
