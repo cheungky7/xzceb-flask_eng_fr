@@ -1,10 +1,8 @@
-import json
-from ibm_watson import LanguageTranslatorV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+"""Translator module."""
 import os
-from dotenv import load_dotenv
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -19,30 +17,25 @@ language_translator = LanguageTranslatorV3(
 
 language_translator.set_service_url(url)
 
-def englishToFrench(englishText):
-    #write the code here
-
+def englishToFrench(english_text):
+    '''Takes in English, returns French'''
     translation = language_translator.translate(
-    englishText,
+    english_text,
     model_id='en-fr').get_result()
-  
    # print(translation)
-    print((translation.get('translations'))[0].get('translation'))
+   # print((translation.get('translations'))[0].get('translation'))
    # print(tran_obj)
-    frenchText=(translation.get('translations'))[0].get('translation')
+    french_text=(translation.get('translations'))[0].get('translation')
 
-    return frenchText
+    return french_text
 
-def frenchToEnglish(frenchText):
-    #write the code here
-    
+def frenchToEnglish(french_text):
+    '''Takes in French, returns English'''
     translation = language_translator.translate(
-    frenchText,
+    french_text,
     model_id='fr-en').get_result()
-  
-   # print(translation)
-    print((translation.get('translations'))[0].get('translation'))
-    
-    englishText=(translation.get('translations'))[0].get('translation')
-   # print(tran_obj)
-    return englishText
+    # print(translation)
+    # print((translation.get('translations'))[0].get('translation'))
+    english_text=(translation.get('translations'))[0].get('translation')
+    # print(tran_obj)
+    return english_text
